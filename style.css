@@ -1,0 +1,39 @@
+.container {
+    display: flex;
+    background-color: #20203f;
+    font-family: 'Bebas Neue', sans-serif;
+  }
+  
+  .sidebar {
+    width: 20%;
+    height: 100%;
+    background-color: #222222;
+    color: #f1f1f1;
+    /* Additional styles for sidebar */
+  }
+  
+  .main {
+    flex-grow: 1;
+    
+    color: #f1f1f1;
+    /* Additional styles for main area */
+  }
+  
+  header {
+    text-align: center;
+    /* Additional styles for header */
+  }
+  
+  .content {
+    text-align: center;
+    
+    /* Additional styles for content area */
+  }
+  
+  ul {
+      font-size: 20px;
+    list-style-type: none;
+    padding: 10;
+    /* Additional styles for unordered list */
+  }
+  
