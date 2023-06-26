@@ -23,7 +23,7 @@ items = [
     { itemName: "paprikas", imageUrl: "/assets/paprikas-svgrepo-com.svg" },
     { itemName: "potatoes", imageUrl: "/assets/potatoes-svgrepo-com.svg" },
     { itemName: "strawberry", imageUrl: "/assets/strawberry-svgrepo-com.svg" },
-    { itemName: "water", imageUrl: "/assets/water-svgrepo-com.svg" }
+    { itemName: "watermelon", imageUrl: "/assets/water-svgrepo-com.svg" }
   ];
   // console.log(items)
 
@@ -36,8 +36,9 @@ items = [
 
 function fruitClicked() {
   const randomElement = Math.floor(Math.random() * items.length);
-  const randomAnswer = items[randomElement].imageUrl;
-  console.log(randomAnswer);
+  const randomAnswer = items[randomElement];
+  const randomAnswerImageUrl = randomAnswer.imageUrl;
+  const randomAnswerName = randomAnswer.itemName;
   const myDiv = document.querySelector("#fruitGuess");
   // create a text element 
   const textElement = document.createElement("p");
@@ -45,7 +46,7 @@ function fruitClicked() {
 
    // Create <img> element for the photo
    const imgElement = document.createElement("img");
-   imgElement.src = randomAnswer;
+   imgElement.src = randomAnswerImageUrl;
    imgElement.alt = "Fruit";
    imgElement.width = 100;
    imgElement.height = 100;
@@ -53,6 +54,37 @@ function fruitClicked() {
    // append the text element and image element
    myDiv.appendChild(textElement);
    myDiv.appendChild(imgElement);
+   // Create the input element
+   const inputElement = document.createElement('input');
+   inputElement.type = 'text';
+   inputElement.placeholder = 'Enter your answer';
+  // Create the submit button
+   const submitButton = document.createElement('input');
+   submitButton.type = 'submit';
+   submitButton.value = 'Submit';
+   submitButton.addEventListener('click', answerCheck);
+   myDiv.appendChild(inputElement);
+   myDiv.appendChild(submitButton);
+
+  // Function to handle answer submission
+  function answerCheck() {
+  // Retrieve the entered answer from the input element
+    const answer = inputElement.value;
+    if (answer === randomAnswerName) {
+      const success = document.createElement("p");
+      success.innerHTML = "You guessed correctly! The answer was: " + randomAnswerName;
+      myDiv.appendChild(success);
+
+    } else {
+      const failure = document.createElement("p");
+      failure.innerHTML = "You guessed incorrectly! Please Try Again.";
+      myDiv.appendChild(failure);
+
+    }
+  
+}
+   
 
 
 }
+
