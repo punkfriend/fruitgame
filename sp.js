@@ -70,15 +70,29 @@ function fruitClicked() {
   function answerCheck() {
   // Retrieve the entered answer from the input element
     const answer = inputElement.value;
+    //create an image element for success image
+    const succElement = document.createElement("img");
+    succElement.src = "/assets/trophy-svgrepo-com.svg";
+    succElement.alt = "Trophy";
+    succElement.width = 100;
+    succElement.height = 100;
+    //create an image element for failure image
+    const failElement = document.createElement("img");
+    failElement.src = "/assets/thumb-down-svgrepo-com.svg";
+    failElement.alt = "Thumbs Down Emoji";
+    failElement.width = 100;
+    failElement.height = 100;
     if (answer === randomAnswerName) {
       const success = document.createElement("p");
       success.innerHTML = "You guessed correctly! The answer was: " + randomAnswerName;
       myDiv.appendChild(success);
+      myDiv.appendChild(succElement);
 
     } else {
       const failure = document.createElement("p");
       failure.innerHTML = "You guessed incorrectly! Please Try Again.";
       myDiv.appendChild(failure);
+      myDiv.appendChild(failElement);
 
     }
   
